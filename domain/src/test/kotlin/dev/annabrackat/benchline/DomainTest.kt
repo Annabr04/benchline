@@ -112,6 +112,14 @@ class DomainTest {
     }
 
     @Test
+    fun negativeCountIsRejected() {
+        val result = Workflow.recordCount(sample(FillStatus.IN_FILL), -1)
+        assertEquals("range", (result as DomainResult.Err).code)
+        val zero = Workflow.recordCount(sample(FillStatus.IN_FILL), 0) as DomainResult.Ok
+        assertEquals(0, zero.value.countedQuantity)
+    }
+
+    @Test
     fun handoffKeepsOpenStatAndExceptions() {
         val brief = buildHandoff(SeedData.orders(0))
         assertEquals(1, brief.statOpen.size)
