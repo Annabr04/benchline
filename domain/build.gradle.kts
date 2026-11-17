@@ -9,7 +9,7 @@ kotlin {
 }
 
 dependencies {
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:2.2.10")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:2.2.21")
 }
 
 tasks.test {
